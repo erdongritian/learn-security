@@ -1,0 +1,28 @@
+server:
+  port: 8111
+spring:
+  data:
+    mongodb:
+      uri: mongodb://192.168.11.180:27017/securitytest
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+logging:
+  level:
+    org.springframework:
+      data: DEBUG
+      security: DEBUG
+
+
+jwt:
+  header: Authorization
+  secret: mySecret
+  #过期时间7天，app端，每天第一次登陆时，刷新token
+  expiration: 604800
+  tokenHead: "Bearer "
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
+      register: "auth/register"
